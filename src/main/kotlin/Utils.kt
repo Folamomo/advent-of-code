@@ -24,3 +24,9 @@ fun <T1, T2> List<Pair<T1, T2>>.forEachElement(action1: (T1) -> Unit, action2: (
     }
 }
 
+fun <T> List<T>.without(index: Int) : List<T>{
+    val result = this.toMutableList()
+    result.removeAt(index)
+    return result
+}
+

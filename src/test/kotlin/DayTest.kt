@@ -10,7 +10,7 @@ class DayTest(
 
     fun doTest(){
         val testInput = testResourcesDir / "Day%02d_test.txt".format(underTest.number)
-        assert(expected1 == underTest.part1(testInput))
-        assert(expected2 == underTest.part2(testInput))
+        assert(expected1 == underTest.part1(testInput)){"Day ${underTest.number} part 1 failed"}
+        assert(expected2 == underTest.part2(testInput)){"Day ${underTest.number} part 2 failed"}
     }
 }
