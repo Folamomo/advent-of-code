@@ -1,38 +1,23 @@
 import kotlin.math.abs
 
-class Day2: Day(2) {
+class Day2 : Day(2) {
     override fun part1(input: List<String>): Int {
         return input.count { isSafe(it.split(whitespaceRegex).map(String::toInt)) }
     }
 
-    private fun isSafe(levels: List<Int>): Boolean {
-        return when{
-            levels[0] < levels[1] -> isSafeAscending(levels)
-            levels[0] > levels[1] -> isSafeDescending(levels)
-            else ->  false
+    private fun isSafe(levels: List<Int>, startAt: Int = 0): Boolean {
+        val direction = levels[0].compareTo(levels[1])
+        if (direction == 0) return false
+        for (i in startAt until levels.size - 1) {
+            if (levels[i].compareTo(levels[i + 1]) != direction || !checkDistance(levels[i], levels[i + 1])) {
+                return false
+            }
         }
+        return true
     }
 
-    fun checkDistance(x: Int, y: Int): Boolean {
+    private fun checkDistance(x: Int, y: Int): Boolean {
         return abs(x - y) <= 3
-    }
-
-    fun isSafeAscending(levels: List<Int>): Boolean{
-        for (i: Int in 0 until levels.size-1) {
-            if (!checkDistance(levels[i], levels[i + 1]) || !(levels[i] < levels[i + 1])) {
-                return false
-            }
-        }
-        return true
-    }
-
-    fun isSafeDescending(levels: List<Int>): Boolean{
-        for (i: Int in 0 until levels.size-1) {
-            if (!checkDistance(levels[i], levels[i + 1]) || !(levels[i] > levels[i + 1])) {
-                return false
-            }
-        }
-        return true
     }
 
     override fun part2(input: List<String>): Int {
@@ -40,38 +25,22 @@ class Day2: Day(2) {
     }
 
     private fun isSafeWithDampening(levels: List<Int>): Boolean {
-        return  (
-                    levels[0] < levels[1] &&
-                    checkDistance(levels[0], levels[1]) &&
-                    isSafeAscendingWithDampening(levels)
-                ) ||
-                (
-                    levels[0] > levels[1] &&
-                    checkDistance(levels[0], levels[1]) &&
-                    isSafeDescendingWithDampening(levels)
-                ) ||
-                isSafe(levels.subList(1, levels.size)) ||
-                isSafe(levels.without(1))
-    }
+        val direction = levels[0].compareTo(levels[1])
 
-    private fun isSafeAscendingWithDampening(levels: List<Int>): Boolean{
-        return levels.size <= 3 ||
-                (checkDistance(levels[1], levels[2]) &&
-                    levels[1] < levels[2] &&
-                    isSafeAscendingWithDampening(levels.subList(1, levels.size))
-                ) ||
-                isSafeAscending(levels.without(1)) ||
-                isSafeAscending(levels.without(2))
+        if (!checkDistance(levels[0], levels[1]) || direction == 0) {
+            return isSafe(levels.without(0)) || isSafe(levels.without(1))
+        }
 
-    }
+        if (direction != levels[1].compareTo(levels[2])) {
+            return isSafe(levels.without(0)) || isSafe(levels.without(1)) || isSafe(levels.without(2))
+        }
 
-    private fun isSafeDescendingWithDampening(levels: List<Int> ): Boolean{
-        return levels.size <= 3 ||
-                (checkDistance(levels[1], levels[2]) &&
-                        levels[1] > levels[2] &&
-                        isSafeDescendingWithDampening(levels.subList(1, levels.size))
-                        ) ||
-                isSafeDescending(levels.without(1)) ||
-                isSafeDescending(levels.without(2))
+        for (i: Int in 1 until levels.size - 1) {
+            if (levels[i].compareTo(levels[i + 1]) != direction || !checkDistance(levels[i], levels[i + 1])) {
+                return isSafe(levels.without(i), i - 1) || isSafe(levels.without(i + 1), i - 1)
+            }
+        }
+
+        return true
     }
 }
