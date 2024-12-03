@@ -12,9 +12,9 @@ class Day3: Day(3) {
 
     override fun part2(input: Path): Int {
         val regex = """do\(\)|don't\(\)|mul\((\d+),(\d+)\)""".toRegex()
+
         var result = 0
         var enabled = true
-
         for (match in regex.findAll(input.readText())) {
             when {
                 match.value == "do()" -> enabled = true
