@@ -1,8 +1,10 @@
+import java.nio.file.Path
+import kotlin.io.path.readLines
 import kotlin.math.abs
 
 class Day2 : Day(2) {
-    override fun part1(input: List<String>): Int {
-        return input.count { isSafe(it.split(whitespaceRegex).map(String::toInt)) }
+    override fun part1(input: Path): Int {
+        return input.readLines().count { isSafe(it.split(whitespaceRegex).map(String::toInt)) }
     }
 
     private fun isSafe(levels: List<Int>, startAt: Int = 0): Boolean {
@@ -20,8 +22,8 @@ class Day2 : Day(2) {
         return abs(x - y) <= 3
     }
 
-    override fun part2(input: List<String>): Int {
-        return input.count { isSafeWithDampening(it.split(whitespaceRegex).map(String::toInt)) }
+    override fun part2(input: Path): Int {
+        return input.readLines().count { isSafeWithDampening(it.split(whitespaceRegex).map(String::toInt)) }
     }
 
     private fun isSafeWithDampening(levels: List<Int>): Boolean {
