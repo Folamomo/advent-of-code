@@ -1,4 +1,5 @@
 import java.math.BigInteger
+import java.nio.file.Path
 import java.security.MessageDigest
 
 /**
@@ -28,5 +29,12 @@ fun <T> List<T>.without(index: Int) : List<T>{
     val result = this.toMutableList()
     result.removeAt(index)
     return result
+}
+
+fun loadAs2dMatrix(input: Path): Array<Array<Char>> {
+    return input.toFile().readLines()
+        .map(String::toCharArray)
+        .map(CharArray::toTypedArray)
+        .toTypedArray()
 }
 

@@ -4,6 +4,7 @@ enum class Days(val day: Day) {
     DAY3(Day3()),
     DAY4(Day4()),
     DAY5(Day5()),
+    DAY6(Day6()),
     ;
     fun run() = day.run()
 }

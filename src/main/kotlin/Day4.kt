@@ -55,12 +55,7 @@ class Day4 : Day(4) {
             .toTypedArray()
     }
 
-    private fun loadAs2dMatrix(input: Path): Array<Array<Char>> {
-        return input.toFile().readLines()
-            .map(String::toCharArray)
-            .map(CharArray::toTypedArray)
-            .toTypedArray()
-    }
+
 
     private fun countMatches(
         array: Array<Array<Char>>,
