@@ -3,4 +3,5 @@ class DayTests {
     class Day2Test: DayTest(Day2(), 2, 4)
     class Day3Test: DayTest(Day3(), 161, 48)
     class Day4Test: DayTest(Day4(), 18, 9)
+    class Day5Test: DayTest(Day5(), 143, 123)
 }

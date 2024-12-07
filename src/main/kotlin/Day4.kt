@@ -1,6 +1,6 @@
 import java.nio.file.Path
 
-class Day4: Day(4) {
+class Day4 : Day(4) {
     private val patterns = arrayOf(
         """XMAS""",
         """SAMX""",
@@ -40,12 +40,12 @@ class Day4: Day(4) {
                 |*M**
                 |X***
             """,
-        ).map(String::trimMargin)
+    ).map(String::trimMargin)
         .map(::stringTo2dMatrix)
 
     override fun part1(input: Path): Int {
         val data = loadAs2dMatrix(input)
-        return patterns.sumOf{countMatches(data, it)}
+        return patterns.sumOf { countMatches(data, it) }
     }
 
     private fun stringTo2dMatrix(s: String): Array<Array<Char>> {
@@ -67,11 +67,11 @@ class Day4: Day(4) {
         mask: Array<Array<Char>>,
     ): Int {
         var count = 0
-        for (i in 0 .. array.size - mask.size){
-            maskPositionLoop@for (j in 0 .. array[0].size - mask[0].size){
-                for (k in mask.indices){
-                    for (l in mask[0].indices){
-                        if(!charMatches(array[i + k][j + l], mask[k][l])) continue@maskPositionLoop
+        for (i in 0..array.size - mask.size) {
+            maskPositionLoop@ for (j in 0..array[0].size - mask[0].size) {
+                for (k in mask.indices) {
+                    for (l in mask[0].indices) {
+                        if (!charMatches(array[i + k][j + l], mask[k][l])) continue@maskPositionLoop
                     }
                 }
                 count++
@@ -80,7 +80,7 @@ class Day4: Day(4) {
         return count
     }
 
-    private fun charMatches(c1: Char, c2: Char): Boolean{
+    private fun charMatches(c1: Char, c2: Char): Boolean {
         return c2 == '*' || c1 == c2
     }
 
@@ -111,6 +111,6 @@ class Day4: Day(4) {
 
     override fun part2(input: Path): Int {
         val data = loadAs2dMatrix(input)
-        return patterns2.sumOf{countMatches(data, it)}
+        return patterns2.sumOf { countMatches(data, it) }
     }
 }
