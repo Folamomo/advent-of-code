@@ -1,6 +1,5 @@
 import java.nio.file.Path
-import java.util.Collections
-import java.util.HashMap
+import java.util.*
 import kotlin.io.path.readLines
 
 class Day5: Day(5) {

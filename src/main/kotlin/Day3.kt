@@ -22,7 +22,6 @@ class Day3: Day(3) {
                 enabled -> result += calculateMatch(match)
             }
         }
-
         return result
     }
 }
