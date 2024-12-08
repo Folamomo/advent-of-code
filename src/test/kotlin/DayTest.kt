@@ -5,8 +5,8 @@ import kotlin.io.path.div
 
 abstract class DayTest(
     private val underTest: Day,
-    private val expected1: Int,
-    private val expected2: Int
+    private val expected1: Long,
+    private val expected2: Long
 ){
     private val testResourcesDir: Path = Path.of("src", "test", "resources")
     private val testInput = testResourcesDir / "Day%02d_test.txt".format(underTest.number)

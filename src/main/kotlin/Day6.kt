@@ -1,9 +1,9 @@
 import java.nio.file.Path
 
 class Day6: Day(6) {
-    override fun part1(input: Path): Int {
+    override fun part1(input: Path): Long {
         val map = loadAs2dMatrix(input)
-        return solve(map)
+        return solve(map).toLong()
     }
 
     enum class Direction(val symbol: Char){
@@ -99,9 +99,9 @@ class Day6: Day(6) {
         }
     }
 
-    override fun part2(input: Path): Int {
+    override fun part2(input: Path): Long {
         val map = loadAs2dMatrix(input)
-        return solve2(map)
+        return solve2(map).toLong()
     }
 
     private fun solve2(map: Array<Array<Char>>): Int {

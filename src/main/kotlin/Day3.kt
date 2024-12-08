@@ -5,12 +5,12 @@ class Day3: Day(3) {
     private val mulRegex = """mul\((\d+),(\d+)\)""".toRegex()
     private fun calculateMatch(it: MatchResult): Int = it.groups[1]!!.value.toInt() * it.groups[2]!!.value.toInt()
 
-    override fun part1(input: Path): Int {
+    override fun part1(input: Path): Long {
         return mulRegex.findAll(input.readText())
-            .sumOf(::calculateMatch)
+            .sumOf(::calculateMatch).toLong()
     }
 
-    override fun part2(input: Path): Int {
+    override fun part2(input: Path): Long {
         val regex = """do\(\)|don't\(\)|mul\((\d+),(\d+)\)""".toRegex()
 
         var result = 0
@@ -23,6 +23,6 @@ class Day3: Day(3) {
             }
         }
 
-        return result
+        return result.toLong()
     }
 }

@@ -4,11 +4,11 @@ import java.util.HashMap
 import kotlin.io.path.readLines
 
 class Day5: Day(5) {
-    override fun part1(input: Path): Int {
+    override fun part1(input: Path): Long {
         val (rules, books) = readInput(input)
         return books.filter{checkBook(it, rules)}
 //            .map{println(it); it}
-            .sumOf(::getMiddle)
+            .sumOf(::getMiddle).toLong()
     }
 
     private fun checkBook(book: List<Int>, rules: HashMap<Int, ArrayList<Int>>): Boolean{
@@ -44,11 +44,11 @@ class Day5: Day(5) {
         return Pair(rules, books)
     }
 
-    override fun part2(input: Path): Int {
+    override fun part2(input: Path): Long {
         val (rules, books) = readInput(input)
         return books.filter{!checkBook(it, rules)}
             .map { fixBook(it, rules) }
-            .sumOf(::getMiddle)
+            .sumOf(::getMiddle).toLong()
     }
 
     private fun fixBook(pages: List<Int>, rules: HashMap<Int, ArrayList<Int>>): List<Int> {

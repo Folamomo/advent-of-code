@@ -43,9 +43,9 @@ class Day4 : Day(4) {
     ).map(String::trimMargin)
         .map(::stringTo2dMatrix)
 
-    override fun part1(input: Path): Int {
+    override fun part1(input: Path): Long {
         val data = loadAs2dMatrix(input)
-        return patterns.sumOf { countMatches(data, it) }
+        return patterns.sumOf { countMatches(data, it) }.toLong()
     }
 
     private fun stringTo2dMatrix(s: String): Array<Array<Char>> {
@@ -104,8 +104,8 @@ class Day4 : Day(4) {
         .map(::stringTo2dMatrix)
 
 
-    override fun part2(input: Path): Int {
+    override fun part2(input: Path): Long {
         val data = loadAs2dMatrix(input)
-        return patterns2.sumOf { countMatches(data, it) }
+        return patterns2.sumOf { countMatches(data, it) }.toLong()
     }
 }
