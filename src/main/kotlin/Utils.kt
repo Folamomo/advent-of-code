@@ -38,3 +38,21 @@ fun loadAs2dMatrix(input: Path): Array<Array<Char>> {
         .toTypedArray()
 }
 
+fun <T> pairwise(list: List<T>) = sequence {
+    for (left in list.indices){
+        for (right in left + 1 ..< list.size){
+            yield(Pair(list[left], list[right]))
+        }
+    }
+}
+
+fun GCD(a: Int, b: Int): Int {
+    var num1 = a
+    var num2 = b
+    while (num2 != 0) {
+        val temp = num2
+        num2 = num1 % num2
+        num1 = temp
+    }
+    return num1
+}
