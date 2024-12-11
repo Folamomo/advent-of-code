@@ -7,4 +7,5 @@ class DayTests {
     class Day6Test: DayTest(Day6(), 41, 6)
     class Day7Test: DayTest(Day7(), 3749L, 11387L)
     class Day8Test: DayTest(Day8(), 14, 34)
+    class Day9Test: DayTest(Day9(), 1928L, 2858L)
 }
