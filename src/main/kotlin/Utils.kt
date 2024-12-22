@@ -38,6 +38,13 @@ fun loadAs2dMatrix(input: Path): Array<Array<Char>> {
         .toTypedArray()
 }
 
+fun loadAs2dMatrixOfDigits(input: Path): List<List<Int>> {
+    return input.toFile().readLines()
+        .map(String::toCharArray)
+        .map(CharArray::toTypedArray)
+        .map{it.map(Char::digitToInt)}
+}
+
 fun <T> pairwise(list: List<T>) = sequence {
     for (left in list.indices){
         for (right in left + 1 ..< list.size){
