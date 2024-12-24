@@ -10,4 +10,5 @@ class DayTests {
     class Day9Test: DayTest(Day9(), 1928L, 2858L)
     class Day10Test: DayTest(Day10(), 36, 81)
     class Day11Test: DayTest(Day11(), 55312L, 65601038650482L)
+    class Day12Test: DayTest(Day12(), 1930, 0)
 }

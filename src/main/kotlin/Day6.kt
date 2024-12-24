@@ -69,17 +69,7 @@ class Day6: Day(6) {
     private operator fun Array<Array<Char>>.get(position: Pair<Int, Int>) = this[position.first][position.second]
     private operator fun Array<Array<Char>>.set(position: Pair<Int, Int>, c: Char){this[position.first][position.second] = c}
 
-    private fun Array<Array<Char>>.println(){
-        for(line in this){
-            for (char in line){
-                print(char)
-            }
-            println("")
-        }
-        println("\n")
-    }
-
-    private fun solve(map: Array<Array<Char>>): Int {
+        private fun solve(map: Array<Array<Char>>): Int {
         var position = findStart(map)
         var direction = Direction.UP
         var counter = 1

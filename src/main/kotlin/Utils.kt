@@ -63,3 +63,13 @@ fun GCD(a: Int, b: Int): Int {
     }
     return num1
 }
+
+fun Array<Array<Char>>.println(){
+    for(line in this){
+        for (char in line){
+            print(char)
+        }
+        println("")
+    }
+    println("\n")
+}
